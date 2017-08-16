@@ -10,28 +10,47 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srlDragRate="0.7"
-        app:srlEnableAutoLoadmore="true"
+        app:srlEnableAutoLoadmore="false"
         app:srlEnablePreviewInEditMode="true"
         app:srlHeaderMaxDragRate="1.3">
 
-        <TextView
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="@color/colorAccent"-->
+        <!--android:gravity="center"-->
+        <!--android:text="下拉刷新-&#45;&#45;" />-->
+        <!--<include-->
+        <!--layout="@layout/layout_refresh_header"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="80dp" />-->
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorAccent"
-            android:gravity="center"
-            android:text="下拉刷新---" />
+            android:layout_height="wrap_content"></com.scwang.smartrefresh.layout.header.ClassicsHeader>
+
+        <!--<pl.droidsonroids.gif.GifImageView-->
+        <!--android:id="@+id/gifview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:src="@mipmap/ic_refresh_header"-->
+        <!--app:layout_srlSpinnerStyle="Scale" />-->
 
         <ListView
             android:id="@+id/lv_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
 
-        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+        <include
+            layout="@layout/layout_refresh_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srlAccentColor="#888"
-            app:srlClassicsSpinnerStyle="Translate"
-            app:srlDrawableProgress="@drawable/ic_progress_hojder" />
+            android:layout_height="80dp" />
+        <!--<com.scwang.smartrefresh.layout.footer.ClassicsFooter-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srlAccentColor="#888"-->
+        <!--app:srlClassicsSpinnerStyle="Translate"-->
+        <!--app:srlDrawableProgress="@mipmap/ic_launcher" />-->
 
         <!--<TextView-->
         <!--android:layout_width="match_parent"-->
