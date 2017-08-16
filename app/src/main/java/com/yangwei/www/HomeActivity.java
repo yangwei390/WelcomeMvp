@@ -43,10 +43,22 @@ public class HomeActivity extends BaseActivity implements OnRefreshLoadmoreListe
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         Toast.makeText(this, "加载更多", Toast.LENGTH_SHORT).show();
+        srltHome.getLayout().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                srltHome.finishLoadmore();
+            }
+        }, 3000);
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         Toast.makeText(this, "头部刷新", Toast.LENGTH_SHORT).show();
+        srltHome.getLayout().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                srltHome.finishRefresh();
+            }
+        }, 3000);
     }
 }
