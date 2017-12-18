@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HomeActivity"
+            android:name=".PdfActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,10 +20,18 @@
             </intent-filter>
         </activity>
         <!--<activity-->
-            <!--android:name=".HomeActivity"-->
-            <!--android:screenOrientation="portrait" />-->
+        <!--android:name=".HomeActivity"-->
+        <!--android:screenOrientation="portrait" />-->
         <activity
             android:name=".WaterfallActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="HomeActivity"
+            android:screenOrientation="portrait" />
+        <!-- MU pdf 组件 -->
+        <activity
+            android:name="com.artifex.mupdfdemo.MuPDFActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
     </application>
 

@@ -55,7 +55,7 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public void onPullingDown(float percent, int offset, int headerHeight, int extendHeight) {
-        setVisibility(GONE);
+//        setVisibility(GONE);
         Log.e("Test","------------------------------onPullingDown");
     }
 
