@@ -11,8 +11,10 @@ import com.yangwei.www.view.dialog.LoadingDialog;
 
 public abstract class BaseActivity extends AppCompatActivity implements INetView {
     private LoadingDialog dialog;
+    private BasePersenter basePersenter;
 
     protected abstract void initView();
+
 
     @Override
     public void toast(String str) {
@@ -47,4 +49,8 @@ public abstract class BaseActivity extends AppCompatActivity implements INetView
         toast("登录异常");
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
