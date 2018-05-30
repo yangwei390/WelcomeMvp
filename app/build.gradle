@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.yangwei.www"
         minSdkVersion 15
-        targetSdkVersion 21
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -26,7 +30,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.okhttp3:okhttp:3.10.0'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
@@ -36,5 +40,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
-    compile project(':mupdf')
+    compile 'io.reactivex:rxjava:1.1.5'
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
+    implementation 'com.google.code.gson:gson:2.8.4'
 }

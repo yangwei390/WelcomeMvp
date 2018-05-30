@@ -1,12 +1,13 @@
 package com.yangwei.www.base;
 
 /**
- * 涉及到网络异步dialog的view接口
- * Created by yangwei on 2017/8/16.
+ * Created by yangwei on 2018/5/30.
  */
 
-public interface INetView<T> extends IBaseView<T> {
+public interface INetView {
     void showNetDialog();
 
     void dismissNetDialog();
+
+    void toast(String str);
 }

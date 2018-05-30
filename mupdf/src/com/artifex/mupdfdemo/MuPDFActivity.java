@@ -226,6 +226,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		System.out.println("Trying to open " + path);
 		try
 		{
+
 			core = new MuPDFCore(this, path,soPath);
 			// New file: drop the old outline data
 			OutlineActivityData.set(null);

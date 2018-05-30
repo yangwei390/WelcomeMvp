@@ -4,14 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_click"
+    <Button
+        android:id="@+id/btn_get"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="AAAA" />
+        android:text="获取联系人" />
 
-    <com.joanzapata.pdfview.PDFView
-        android:id="@+id/pdf_v"
+    <TextView
+        android:id="@+id/tv_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="名字" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="手机号" />
 </LinearLayout>

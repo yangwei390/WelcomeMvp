@@ -9,6 +9,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
@@ -62,7 +64,7 @@ public class DeviceUtils {
     }
 
     /**
-     * 获取手机IMSI(国际移动用户识别码) for a GSM phone.
+     * 获取手机IMSI(国际移动用户识别码) for showVersionInfo GSM phone.
      */
     public static String getPhoneIMSI(Context context) {
 
@@ -446,4 +448,83 @@ public class DeviceUtils {
 
     }
 
+    /**
+     * @param context
+     * @return
+     * @describe 获取设备唯一标识
+     */
+    public static String getDeviceUniqueId(Context context) {
+        String deviceId = "";
+        if (null != context) {
+            TelephonyManager tm = (TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            /**
+             * 唯一编号（IMEI, MEID, ESN, IMSI） 缺点 Android设备要具有电话功能 其工作不是很可靠 序列号
+             * 当其工作时，该值保留了设备的重置信息（“恢复出厂设置”），从而可以消除当客户删除自己设备上的信息，并把设备转另一个人时发生的错误。
+             */
+            if (tm != null) {
+                try {
+                    deviceId = tm.getDeviceId();
+                    if (!TextUtils.isEmpty(deviceId)) {
+                        return deviceId;
+                    }
+                } catch (Exception e) {
+
+                }
+                try {
+                    deviceId = tm.getSubscriberId();
+                    if (!TextUtils.isEmpty(deviceId)) {
+                        return deviceId;
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            WifiManager wifi = (WifiManager) context
+                    .getSystemService(Context.WIFI_SERVICE);
+            WifiInfo info = wifi.getConnectionInfo();
+            deviceId = info.getMacAddress();
+            if (!TextUtils.isEmpty(deviceId)) {
+                return deviceId;
+            }
+        }
+        // 序列号 缺点序列号无法在所有Android设备上使用
+        try {
+            Class<?> c = Class.forName("android.os.SystemProperties");
+            Method get = c.getMethod("get", String.class, String.class);
+            deviceId = (String) (get.invoke(c, "ro.serialno", "unknown"));
+            if (!TextUtils.isEmpty(deviceId)) {
+                return deviceId;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        /**
+         * ANDROID_ID 缺点 对于Android 2.2（“Froyo”）之前的设备不是100％的可靠
+         * 此外，在主流制造商的畅销手机中至少存在一个众所周知的错误，每一个实例都具有相同的ANDROID_ID。
+         */
+        if (null != context) {
+            deviceId = Settings.Secure.getString(context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+            if (!TextUtils.isEmpty(deviceId)
+                    && !"9774d56d682e549c".equals(deviceId)) {
+                return deviceId;
+            }
+        }
+
+//        if (TextUtils.isEmpty(deviceId)) {
+//            deviceId = PrefUtils.getPrefString(App.Instance(), SPConstant.IMEI, "");
+//            if (!TextUtils.isEmpty(deviceId)) {
+//                return deviceId;
+//            } else {
+//                final SecureRandom random = new SecureRandom();
+//                deviceId = new BigInteger(64, random).toString(16);
+//                PrefUtils.setPrefString(App.Instance(), SPConstant.IMEI, deviceId);
+//                return deviceId;
+//            }
+//        }
+        return deviceId;
+    }
 }

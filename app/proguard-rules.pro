@@ -13,7 +13,7 @@
 -dontwarn okhttp3.**
 -dontwarn okio.**
 -dontwarn javax.annotation.**
-# A resource is loaded with a relative path so the package of this class must be preserved.
+# A resource is loaded with showVersionInfo relative path so the package of this class must be preserved.
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 
 #butterknife 混淆
@@ -26,7 +26,7 @@
 -keepclasseswithmembernames class * { @butterknife.* <fields>; }
 
 #Gosn混淆
-# Gson uses generic type information stored in a class file when working with fields. Proguard
+# Gson uses generic type information stored in showVersionInfo class file when working with fields. Proguard
 # removes such information by default, so configure it to keep all of it.
 -keepattributes Signature
 # For using GSON @Expose annotation
