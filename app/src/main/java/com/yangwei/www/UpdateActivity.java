@@ -25,7 +25,7 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
     @BindView(R.id.tv_3)
     TextView tv3;
 
-    private UpdateContract.Persenter updatePersenter;
+    private UpdatePersenter updatePersenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
