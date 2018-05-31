@@ -61,6 +61,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        basePersenter.destroy();
+        if (basePersenter != null) {
+            basePersenter.destroy();
+            basePersenter = null;
+        }
     }
 }
