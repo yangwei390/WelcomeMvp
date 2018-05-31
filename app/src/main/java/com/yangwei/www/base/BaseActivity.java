@@ -17,13 +17,13 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     protected abstract void initView();
 
+    protected abstract IBasePersenter initPersenter();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         basePersenter = initPersenter();
     }
-
-    public abstract IBasePersenter initPersenter();
 
     @Override
     public void toast(String str) {
