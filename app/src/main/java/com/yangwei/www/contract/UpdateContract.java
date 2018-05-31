@@ -15,5 +15,6 @@ public interface UpdateContract {
     }
 
     interface Persenter extends IBasePersenter {
+        void getNewVersion();
     }
 }

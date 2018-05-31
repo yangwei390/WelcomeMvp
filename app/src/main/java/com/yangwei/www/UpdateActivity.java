@@ -32,8 +32,7 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
         initView();
-        new UpdatePersenter(this);
-        updatePersenter.destroy();
+        updatePersenter.getNewVersion();
     }
 
     @Override
@@ -47,11 +46,6 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         ButterKnife.bind(this);
     }
 
-//    @Override
-//    public void setPersenter(UpdateContract.Persenter persenter) {
-//        super.setPersenter(persenter);
-//        updatePersenter = persenter;
-//    }
 
     @Override
     public void showVersionInfo(VersionBean versionBean) {

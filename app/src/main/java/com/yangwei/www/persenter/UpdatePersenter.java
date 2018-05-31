@@ -21,7 +21,7 @@ public class UpdatePersenter extends BasePersenter implements UpdateContract.Per
     }
 
     @Override
-    public void destroy() {
+    public void getNewVersion() {
         view.showNetDialog();
         RequestParams params = new RequestParams(UrlConfig.URL_GET_NEW_VERSION);
         params.add("versionCode", "105");
