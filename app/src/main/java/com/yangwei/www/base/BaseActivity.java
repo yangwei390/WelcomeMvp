@@ -1,5 +1,7 @@
 package com.yangwei.www.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.yangwei.www.utils.CommonUiTools;
@@ -9,12 +11,19 @@ import com.yangwei.www.view.dialog.LoadingDialog;
  * Created by yangwei on 2017/8/15.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements INetView {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private LoadingDialog dialog;
-    private BasePersenter basePersenter;
+    private IBasePersenter basePersenter;
 
     protected abstract void initView();
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        basePersenter = initPersenter();
+    }
+
+    public abstract IBasePersenter initPersenter();
 
     @Override
     public void toast(String str) {
@@ -52,5 +61,6 @@ public abstract class BaseActivity extends AppCompatActivity implements INetView
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        basePersenter.destroy();
     }
 }

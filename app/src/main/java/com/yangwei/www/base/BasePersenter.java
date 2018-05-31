@@ -16,9 +16,13 @@ import okhttp3.Call;
  * Created by yangwei on 2018/5/29.
  */
 
-public class BasePersenter {
+public class BasePersenter implements IBasePersenter {
     private List<Call> calls;
     protected IBaseView baseView;
+
+    public BasePersenter(IBaseView view) {
+        this.baseView = view;
+    }
 
     public boolean handlerRequestErr(ResultData data) {
         return HandlerRequestErr.handlerRequestErr(baseView, data);
@@ -63,4 +67,9 @@ public class BasePersenter {
     }
 
 
+    @Override
+    public void destroy() {
+        baseView = null;
+        cancelCall(null);
+    }
 }

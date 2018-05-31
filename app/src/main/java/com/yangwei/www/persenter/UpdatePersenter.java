@@ -16,25 +16,24 @@ public class UpdatePersenter extends BasePersenter implements UpdateContract.Per
     UpdateContract.View view;
 
     public UpdatePersenter(UpdateContract.View view) {
+        super(view);
         this.view = view;
-        baseView = view;
-        this.view.setPersenter(this);
     }
 
     @Override
-    public void start() {
+    public void destroy() {
         view.showNetDialog();
-//        RequestParams params = new RequestParams(UrlConfig.URL_GET_NEW_VERSION);
-//        params.add("versionCode", "105");
-//        startRequest(params, VersionBean.class, new ResponseListener() {
-//            @Override
-//            public void onRefresh(ResultData data) {
-//                view.dismissNetDialog();
-//                if (handlerRequestErr(data)) {
-//                    VersionBean versionBean = (VersionBean) data.getBody();
-//                    view.showVersionInfo(versionBean);
-//                }
-//            }
-//        });
+        RequestParams params = new RequestParams(UrlConfig.URL_GET_NEW_VERSION);
+        params.add("versionCode", "105");
+        startRequest(params, VersionBean.class, new ResponseListener() {
+            @Override
+            public void onRefresh(ResultData data) {
+                view.dismissNetDialog();
+                if (handlerRequestErr(data)) {
+                    VersionBean versionBean = (VersionBean) data.getBody();
+                    view.showVersionInfo(versionBean);
+                }
+            }
+        });
     }
 }

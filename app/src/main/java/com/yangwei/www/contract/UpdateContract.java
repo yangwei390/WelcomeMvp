@@ -8,12 +8,12 @@ import com.yangwei.www.bean.VersionBean;
  * Created by yangwei on 2018/5/30.
  */
 
-public class UpdateContract {
+public interface UpdateContract {
 
-    public interface View extends IBaseView<Persenter> {
+    interface View extends IBaseView {
         void showVersionInfo(VersionBean versionBean);
     }
 
-    public interface Persenter extends IBasePersenter {
+    interface Persenter extends IBasePersenter {
     }
 }

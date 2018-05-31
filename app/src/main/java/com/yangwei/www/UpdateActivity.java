@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.widget.TextView;
 
 import com.yangwei.www.base.BaseActivity;
+import com.yangwei.www.base.IBasePersenter;
 import com.yangwei.www.bean.VersionBean;
 import com.yangwei.www.contract.UpdateContract;
 import com.yangwei.www.persenter.UpdatePersenter;
@@ -32,7 +33,13 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         setContentView(R.layout.activity_update);
         initView();
         new UpdatePersenter(this);
-        updatePersenter.start();
+        updatePersenter.destroy();
+    }
+
+    @Override
+    public IBasePersenter initPersenter() {
+        updatePersenter = new UpdatePersenter(this);
+        return updatePersenter;
     }
 
     @Override
@@ -40,10 +47,11 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         ButterKnife.bind(this);
     }
 
-    @Override
-    public void setPersenter(UpdateContract.Persenter persenter) {
-        updatePersenter = persenter;
-    }
+//    @Override
+//    public void setPersenter(UpdateContract.Persenter persenter) {
+//        super.setPersenter(persenter);
+//        updatePersenter = persenter;
+//    }
 
     @Override
     public void showVersionInfo(VersionBean versionBean) {

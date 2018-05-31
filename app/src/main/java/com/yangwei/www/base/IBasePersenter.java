@@ -6,5 +6,5 @@ package com.yangwei.www.base;
  */
 
 public interface IBasePersenter {
-    void start();
+    void destroy();
 }

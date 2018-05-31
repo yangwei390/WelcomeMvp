@@ -8,7 +8,7 @@ import com.yangwei.www.base.IBaseView;
  */
 
 public interface HomeContract {
-    interface View extends IBaseView<Persenter> {
+    interface View extends IBaseView {
 
     }
 
