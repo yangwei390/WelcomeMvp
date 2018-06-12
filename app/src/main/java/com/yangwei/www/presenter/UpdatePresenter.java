@@ -1,6 +1,6 @@
-package com.yangwei.www.persenter;
+package com.yangwei.www.presenter;
 
-import com.yangwei.www.base.BasePersenter;
+import com.yangwei.www.base.BasePresenter;
 import com.yangwei.www.bean.VersionBean;
 import com.yangwei.www.contract.UpdateContract;
 import com.yangwei.www.net.RequestParams;
@@ -12,10 +12,10 @@ import com.yangwei.www.net.UrlConfig;
  * Created by yangwei on 2018/5/30.
  */
 
-public class UpdatePersenter extends BasePersenter implements UpdateContract.Persenter {
+public class UpdatePresenter extends BasePresenter implements UpdateContract.Persenter {
     UpdateContract.View view;
 
-    public UpdatePersenter(UpdateContract.View view) {
+    public UpdatePresenter(UpdateContract.View view) {
         super(view);
         this.view = view;
     }

@@ -13,11 +13,11 @@ import com.yangwei.www.view.dialog.LoadingDialog;
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private LoadingDialog dialog;
-    private IBasePersenter basePersenter;
+    private IBasePresenter basePersenter;
 
     protected abstract void initView();
 
-    protected abstract IBasePersenter initPersenter();
+    protected abstract IBasePresenter initPersenter();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

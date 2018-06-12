@@ -43,4 +43,5 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     implementation 'com.google.code.gson:gson:2.8.4'
+    compile 'com.amap.api:location:latest.integration'//高德定位 √
 }

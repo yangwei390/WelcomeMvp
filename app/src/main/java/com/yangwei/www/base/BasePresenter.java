@@ -16,11 +16,11 @@ import okhttp3.Call;
  * Created by yangwei on 2018/5/29.
  */
 
-public class BasePersenter implements IBasePersenter {
+public class BasePresenter implements IBasePresenter {
     private List<Call> calls;
     protected IBaseView baseView;
 
-    public BasePersenter(IBaseView view) {
+    public BasePresenter(IBaseView view) {
         this.baseView = view;
     }
 
