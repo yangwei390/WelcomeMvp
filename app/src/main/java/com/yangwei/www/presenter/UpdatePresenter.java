@@ -24,7 +24,7 @@ public class UpdatePresenter extends BasePresenter implements UpdateContract.Per
     public void getNewVersion() {
         view.showNetDialog();
         RequestParams params = new RequestParams(UrlConfig.URL_GET_NEW_VERSION);
-        params.add("versionCode", "105");
+        params.add("versionCode", "101");
         startRequest(params, VersionBean.class, new ResponseListener() {
             @Override
             public void onRefresh(ResultData data) {
