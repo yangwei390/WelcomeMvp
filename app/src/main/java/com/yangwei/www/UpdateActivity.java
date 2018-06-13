@@ -44,7 +44,7 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         setContentView(R.layout.activity_update);
         initView();
         updatePersenter.getNewVersion();
-        LogUtils.d("BBBBBBBB");
+        LogUtils.d("AAAAAAA");
     }
 
     @Override
