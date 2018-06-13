@@ -12,6 +12,7 @@ import com.yangwei.www.base.IBasePresenter;
 import com.yangwei.www.bean.VersionBean;
 import com.yangwei.www.contract.UpdateContract;
 import com.yangwei.www.presenter.UpdatePresenter;
+import com.yangwei.www.utils.LogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +44,7 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         setContentView(R.layout.activity_update);
         initView();
         updatePersenter.getNewVersion();
+        LogUtils.d("AAAAAAA");
     }
 
     @Override
