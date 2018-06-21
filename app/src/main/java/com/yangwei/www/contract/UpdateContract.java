@@ -14,7 +14,7 @@ public interface UpdateContract {
         void showVersionInfo(VersionBean versionBean);
     }
 
-    interface Persenter extends IBasePresenter {
+    interface Presenter extends IBasePresenter {
         void getNewVersion();
     }
 }

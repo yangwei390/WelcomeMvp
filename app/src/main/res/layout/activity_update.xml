@@ -24,4 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="开始定位" />
+
+    <EditText
+        android:id="@+id/edt_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword" />
 </LinearLayout>
