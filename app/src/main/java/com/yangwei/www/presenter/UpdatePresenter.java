@@ -12,7 +12,7 @@ import com.yangwei.www.net.UrlConfig;
  * Created by yangwei on 2018/5/30.
  */
 
-public class UpdatePresenter extends BasePresenter implements UpdateContract.Persenter {
+public class UpdatePresenter extends BasePresenter implements UpdateContract.Presenter {
     UpdateContract.View view;
 
     public UpdatePresenter(UpdateContract.View view) {

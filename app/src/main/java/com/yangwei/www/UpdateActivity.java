@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yangwei.www.base.BaseActivity;
@@ -31,8 +32,10 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
     TextView tv3;
     @BindView(R.id.btn)
     Button btn;
+    @BindView(R.id.edt_1)
+    EditText edt1;
 
-    private UpdatePresenter updatePersenter;
+    private UpdatePresenter updatePresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,14 +46,14 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         }
         setContentView(R.layout.activity_update);
         initView();
-        updatePersenter.getNewVersion();
-        LogUtils.e("master");
+        updatePresenter.getNewVersion();
+        LogUtils.d("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 
     @Override
-    public IBasePresenter initPersenter() {
-        updatePersenter = new UpdatePresenter(this);
-        return updatePersenter;
+    public IBasePresenter initPresenter() {
+        updatePresenter = new UpdatePresenter(this);
+        return updatePresenter;
     }
 
     @Override
