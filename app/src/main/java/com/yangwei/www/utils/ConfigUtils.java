@@ -13,7 +13,7 @@ public class ConfigUtils {
                 return "https://app.dev.iqianjindai.com";
             case CS:
 //                return "http://192.168.31.144:8082";//陈伟丽
-                return "http://192.168.193.2:8083";
+                return "http://192.168.192.3:8082";
 //                return "http://192.168.193.3:84";//存管存量用户
 //                return "https://app.cs.iqianjindai.com";
             case UAT:

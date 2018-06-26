@@ -30,7 +30,7 @@ import okhttp3.RequestBody;
  * Created by ____ Bye丶 on 2017/3/23.
  */
 public class NetManager {
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    public final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private static OkHttpClient client;
     private OkHttpClient.Builder mBuilder;
