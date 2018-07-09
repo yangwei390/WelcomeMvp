@@ -1,9 +1,10 @@
 package com.yangwei.www;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.WindowManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.yangwei.www.bean.VersionBean;
 import com.yangwei.www.contract.UpdateContract;
 import com.yangwei.www.presenter.UpdatePresenter;
 import com.yangwei.www.utils.LogUtils;
+import com.yangwei.www.utils.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,9 +42,13 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-            // 全屏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+//            // 全屏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            StatusBarUtil.setStatusBarColor(this, R.color.white);
         }
         setContentView(R.layout.activity_update);
         initView();
@@ -71,7 +77,13 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
 
     @OnClick(R.id.btn)
     public void onViewClicked() {
-        toast("开始定位");
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 111 && resultCode == RESULT_OK) {
+            toast(data.getExtras().getString("AAAAAAAA"));
+        }
+    }
 }
