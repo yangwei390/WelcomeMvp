@@ -28,7 +28,7 @@ public abstract class BaseActivity extends NetMonitorActivity implements IBaseVi
         super.onCreate(savedInstanceState);
         basePresenter = initPresenter();
 //        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.colorAccent));
-        ImmersionBar.with(this).init();
+//        ImmersionBar.with(this).init();
     }
 
     @Override

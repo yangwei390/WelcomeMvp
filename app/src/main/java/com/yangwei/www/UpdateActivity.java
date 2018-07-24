@@ -1,12 +1,14 @@
 package com.yangwei.www;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.yangwei.www.base.BaseActivity;
@@ -14,6 +16,7 @@ import com.yangwei.www.base.IBasePresenter;
 import com.yangwei.www.bean.VersionBean;
 import com.yangwei.www.contract.UpdateContract;
 import com.yangwei.www.presenter.UpdatePresenter;
+import com.yangwei.www.utils.DeviceUtils;
 import com.yangwei.www.utils.LogUtils;
 import com.yangwei.www.utils.StatusBarUtil;
 
@@ -67,6 +70,11 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+        Paint textPaint = tv1.getPaint();
+        textPaint.setStyle(Paint.Style.STROKE);
+        textPaint.setTextSize(DeviceUtils.dip2px(this, 40));
+        textPaint.setStrokeWidth(DeviceUtils.dip2px(this, 1));
+        tv1.setText("床前明月光");
     }
 
 
