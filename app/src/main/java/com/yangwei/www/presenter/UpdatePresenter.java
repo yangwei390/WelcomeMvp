@@ -29,10 +29,10 @@ public class UpdatePresenter extends BasePresenter implements UpdateContract.Pre
             @Override
             public void onRefresh(ResultData data) {
                 view.dismissNetDialog();
-                if (handlerRequestErr(data)) {
-                    VersionBean versionBean = (VersionBean) data.getBody();
-                    view.showVersionInfo(versionBean);
-                }
+//                if (handlerRequestErr(data)) {
+//                    VersionBean versionBean = (VersionBean) data.getBody();
+//                    view.showVersionInfo(versionBean);
+//                }
             }
         });
     }

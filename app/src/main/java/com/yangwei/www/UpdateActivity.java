@@ -42,14 +42,16 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //全屏设置
 //        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 //            // 全屏
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-            StatusBarUtil.setStatusBarColor(this, R.color.white);
-        }
+        //白色状态栏
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+//            StatusBarUtil.setStatusBarColor(this, R.color.white);
+//        }
         setContentView(R.layout.activity_update);
         initView();
         updatePresenter.getNewVersion();
@@ -77,6 +79,7 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
 
     @OnClick(R.id.btn)
     public void onViewClicked() {
+        goPage(B.class);
     }
 
     @Override

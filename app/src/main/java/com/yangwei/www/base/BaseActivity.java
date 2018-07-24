@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.yangwei.www.common.Ikeys;
 import com.yangwei.www.utils.CommonUiTools;
 import com.yangwei.www.view.dialog.LoadingDialog;
@@ -14,7 +15,7 @@ import com.yangwei.www.view.dialog.LoadingDialog;
  * Created by yangwei on 2017/8/15.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView, Ikeys {
+public abstract class BaseActivity extends NetMonitorActivity implements IBaseView, Ikeys {
     private LoadingDialog dialog;
     private IBasePresenter basePresenter;
 
@@ -26,6 +27,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         basePresenter = initPresenter();
+//        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.colorAccent));
+        ImmersionBar.with(this).init();
     }
 
     @Override
