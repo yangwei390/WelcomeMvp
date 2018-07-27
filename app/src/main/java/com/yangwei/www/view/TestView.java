@@ -6,8 +6,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.ComposeShader;
+import android.graphics.LightingColorFilter;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.support.annotation.Nullable;
@@ -44,6 +48,7 @@ public class TestView extends View {
         super.onDraw(canvas);
         //画个矩形
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setDither(true);
         paint.setColor(Color.parseColor("#009688"));
         canvas.drawRect(50, 50, 200, 200, paint);
         //画线
@@ -79,10 +84,20 @@ public class TestView extends View {
         paint.setShader(shader);
         canvas.drawCircle(175, 725, 150, paint);
         //BitmapShader
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-        Shader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        Shader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         paint.setShader(bitmapShader);
 //        canvas.drawCircle(500, 725, 1920, paint);
-        canvas.drawCircle(96, 96, 50, paint);
+//        canvas.drawCircle(96, 96, 50, paint);
+        //混合着色器
+        Shader shader1 = new ComposeShader(shaderRepeat, bitmapShader, PorterDuff.Mode.SRC_OVER);
+        paint.setShader(shader1);
+        canvas.drawCircle(500, 725, 150, paint);
+        //颜色过滤
+        ColorFilter lightingColorFilter = new LightingColorFilter(0x00ffff, 0x003000);
+        paint.setColorFilter(lightingColorFilter);
+        canvas.drawCircle(825, 725, 150, paint);
+        //Xfermode 混合
+
     }
 }
