@@ -3,7 +3,12 @@ package com.yangwei.www.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.yangwei.www.common.Ikeys;
 import com.yangwei.www.utils.CommonUiTools;
@@ -15,6 +20,12 @@ import com.yangwei.www.view.dialog.LoadingDialog;
 
 public class BaseFragment extends Fragment implements IBaseView, Ikeys {
     private LoadingDialog dialog;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return null;
+    }
 
     public void showLoginErrDialog() {
         toast("登录异常");

@@ -11,7 +11,7 @@ public final class LogUtils {
     //	public static boolean sIsLogEnabled = IConfig.isLog;// 是否打开LOG
     public static boolean sIsLogEnabled = true;// 是否打开LOG
 
-    public static String TAG = "JY";// LOG默认TAG
+    public static String TAG = "Test";// LOG默认TAG
 
     private static final String TAG_CONTENT_PRINT = "%s:%s.%s:%d";
 
