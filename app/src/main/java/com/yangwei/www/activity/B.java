@@ -1,10 +1,12 @@
-package com.yangwei.www;
+package com.yangwei.www.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.yangwei.www.BFragment;
+import com.yangwei.www.R;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
 import com.yangwei.www.utils.LogUtils;

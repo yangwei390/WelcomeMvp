@@ -1,9 +1,6 @@
-package com.yangwei.www;
+package com.yangwei.www.activity;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,13 +9,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jaeger.library.StatusBarUtil;
+import com.yangwei.www.R;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
 import com.yangwei.www.bean.VersionBean;
 import com.yangwei.www.contract.UpdateContract;
 import com.yangwei.www.presenter.UpdatePresenter;
 import com.yangwei.www.utils.DeviceUtils;
-import com.yangwei.www.utils.LogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,36 +42,15 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
     EditText edt1;
 
     private UpdatePresenter updatePresenter;
-    private UpReceiver upReceiver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //全屏设置
-//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-//            // 全屏
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//        }
-        //白色状态栏
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-//            StatusBarUtil.setStatusBarColor(this, R.color.white);
-//        }
         StatusBarUtil.setTranslucentForImageView(this, null);
         StatusBarUtil.setLightMode(this);
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         setContentView(R.layout.activity_update);
         initView();
         updatePresenter.getNewVersion();
-        A();
-
-    }
-
-    private void A() {
-        upReceiver = new UpReceiver();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ACTION_B);
-        registerReceiver(upReceiver, intentFilter);
     }
 
     @Override
@@ -104,9 +80,7 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
 
     @OnClick(R.id.btn)
     public void onViewClicked() {
-        goPage(B.class);
-//        String uniqueID = UUID.randomUUID().toString();
-//        toast(uniqueID.replaceAll("-", ""));
+        toast(UpdateActivity.class.getName());
     }
 
     @Override
@@ -117,15 +91,4 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         }
     }
 
-    class UpReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(ACTION_B)) {
-                LogUtils.e("Test", "UpdateActivity接收到了广播");
-                Intent intent1 = new Intent();
-                intent1.setAction(B.ACTION_A);
-                context.sendBroadcast(intent1);
-            }
-        }
-    }
 }

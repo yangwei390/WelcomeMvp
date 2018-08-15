@@ -37,7 +37,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UpdateActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +45,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".B"
+            android:name=".activity.UpdateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.B"
             android:screenOrientation="portrait" />
     </application>
 
