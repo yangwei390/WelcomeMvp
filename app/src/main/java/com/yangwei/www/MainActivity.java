@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.yangwei.www.activity.B;
+import com.yangwei.www.activity.MyTextViewActivity;
 import com.yangwei.www.activity.UpdateActivity;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     }
 
     private void setData() {
-        mainList.add(B.class.getName());
+        mainList.add(MyTextViewActivity.class.getName());
         mainList.add(UpdateActivity.class.getName());
     }
 

@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.yangwei.www.BFragment;
+import com.yangwei.www.fragment.BFragment;
 import com.yangwei.www.R;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
@@ -15,7 +15,7 @@ import com.yangwei.www.utils.LogUtils;
  * Created by yangwei on 2018/7/12.
  */
 
-public class B extends BaseActivity {
+public class MyTextViewActivity extends BaseActivity {
     public static final String ACTION_A = "com.yangwei.www.BBB_toast";
 
     @Override

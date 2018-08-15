@@ -48,7 +48,7 @@
             android:name=".activity.UpdateActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.B"
+            android:name=".activity.MyTextViewActivity"
             android:screenOrientation="portrait" />
     </application>
 
