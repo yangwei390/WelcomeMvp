@@ -27,6 +27,7 @@ public class MyTextView extends View {
 
     public MyTextView(Context context) {
         super(context);
+
         this.context = context;
         initPath();
     }

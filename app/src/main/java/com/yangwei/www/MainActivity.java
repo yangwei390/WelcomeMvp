@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yangwei.www.activity.MyTextViewActivity;
+import com.yangwei.www.activity.PropertyAnimationActivity;
 import com.yangwei.www.activity.UpdateActivity;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
@@ -57,6 +58,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private void setData() {
         mainList.add(MyTextViewActivity.class.getName());
         mainList.add(UpdateActivity.class.getName());
+        mainList.add(PropertyAnimationActivity.class.getName());
     }
 
     @Override
