@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources><!--字体大小-->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_small_x">13sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_normal_x">15sp</dimen>
+    <dimen name="text_size_mid">16sp</dimen>
+    <dimen name="text_size_mid_x">17sp</dimen>
+    <dimen name="text_size_big">18sp</dimen>
+    <dimen name="text_size_big_x">19sp</dimen>
+    <dimen name="text_size_big_xx">20sp</dimen>
+    <dimen name="text_size_big_xxx">23sp</dimen>
+    <dimen name="text_size_big_30sp">30sp</dimen>
+</resources>

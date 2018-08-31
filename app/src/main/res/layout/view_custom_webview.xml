@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <WebView
+        android:id="@+id/mWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/lt_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/mErrorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_no_net"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/ic_no_net" />
+
+        <TextView
+            android:id="@+id/mTvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_no_data"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="点击重试"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_normal_x" />
+    </RelativeLayout>
+
+</FrameLayout>
