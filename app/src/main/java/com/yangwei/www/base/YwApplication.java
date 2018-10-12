@@ -3,6 +3,8 @@ package com.yangwei.www.base;
 import android.app.Application;
 import android.content.IntentFilter;
 
+import com.github.promeg.pinyinhelper.Pinyin;
+import com.github.promeg.tinypinyin.lexicons.android.cncity.CnCityDict;
 import com.yangwei.www.net.monitor.NetStatusChangeReceiver;
 
 /**
@@ -18,6 +20,7 @@ public class YwApplication extends Application {
         super.onCreate();
         baseApplication = this;
         registerNetListener();
+        Pinyin.init(Pinyin.newConfig().with(CnCityDict.getInstance(this)));
     }
 
     private void registerNetListener() {

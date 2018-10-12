@@ -5,10 +5,13 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.github.promeg.pinyinhelper.Pinyin;
 import com.yangwei.www.R;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
+import com.yangwei.www.utils.PinYin;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +26,8 @@ public class PropertyAnimationActivity extends BaseActivity {
 
     @BindView(R.id.iv_1)
     ImageView iv1;
+    @BindView(R.id.tv_hanzi)
+    TextView tvHanzi;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +39,9 @@ public class PropertyAnimationActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+//        Pinyin.init(Pinyin.newConfig().with(CnCityDict.getInstance(this)));
+//        tvHanzi.setText(PinYin.getPinYin("重庆"));
+        tvHanzi.setText("" + "a".toUpperCase());
     }
 
     @Override
@@ -46,9 +53,10 @@ public class PropertyAnimationActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_1:
-//                iv1.animate().translationX(500);
                 iv1.animate().translationXBy(100).setDuration(1000).setInterpolator(new AnticipateInterpolator());
-//                iv1.animate().translationX(500);
+                iv1.animate().rotationX(360);
+                iv1.animate().rotationBy(360);
+                iv1.animate().alpha(300);
                 break;
             case R.id.btn:
                 break;

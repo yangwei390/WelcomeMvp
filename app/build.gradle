@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '28.0.2'
     defaultConfig {
         applicationId "com.yangwei.www"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -46,4 +46,7 @@ dependencies {
 //    compile 'com.amap.api:location:latest.integration'//高德定位 √
     compile 'com.jaeger.statusbarutil:library:1.5.1'//状态栏
     compile 'com.gyf.barlibrary:barlibrary:2.3.0'//状态栏
+//  汉字转拼音
+    compile 'com.github.promeg:tinypinyin:2.0.3'
+    compile 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3'
 }

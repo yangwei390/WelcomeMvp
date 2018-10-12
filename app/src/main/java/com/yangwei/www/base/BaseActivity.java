@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
-import com.gyf.barlibrary.ImmersionBar;
 import com.yangwei.www.common.Ikeys;
 import com.yangwei.www.utils.CommonUiTools;
 import com.yangwei.www.view.dialog.LoadingDialog;
