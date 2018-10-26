@@ -56,6 +56,15 @@
         <activity
             android:name=".activity.CommonWebActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.InfoSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CustomHeadeRefreshActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SmartRefreshActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

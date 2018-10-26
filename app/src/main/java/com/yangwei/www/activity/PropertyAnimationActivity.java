@@ -7,11 +7,9 @@ import android.view.animation.AnticipateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.promeg.pinyinhelper.Pinyin;
 import com.yangwei.www.R;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
-import com.yangwei.www.utils.PinYin;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,10 +51,12 @@ public class PropertyAnimationActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_1:
-                iv1.animate().translationXBy(100).setDuration(1000).setInterpolator(new AnticipateInterpolator());
-                iv1.animate().rotationX(360);
-                iv1.animate().rotationBy(360);
-                iv1.animate().alpha(300);
+//                iv1.animate().translationXBy(100).setDuration(1000).setInterpolator(new AnticipateInterpolator());
+//                iv1.animate().rotationX(360);
+//                iv1.animate().rotationBy(360);
+//                iv1.animate().alpha(300);
+                iv1.animate().setDuration(0);
+                iv1.animate().scaleX(-1);
                 break;
             case R.id.btn:
                 break;

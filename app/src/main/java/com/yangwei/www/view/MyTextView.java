@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -87,7 +88,15 @@ public class MyTextView extends View {
         StaticLayout staticLayout = new StaticLayout("玩过自定义View的小伙伴都知道，在View的绘制" +
                 "过程中，有一个类叫做Path，Path可以帮助我们实现很多自定义形状的View，特别是" +
                 "配合xfermode ..", textPaint, 1080, Layout.Alignment.ALIGN_NORMAL, 1, 0, true);
-        staticLayout.draw(canvas);
+//        staticLayout.draw(canvas);
+
+//        String text = "玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道，" +
+//                "在View的绘制过程中，有一个类叫做Path，Path可以帮助我们实现很多自定义形状的View，特别是";
+       String text = "玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩玩过自定义View的小伙伴都知道玩过自定义View的小伙伴都知道玩";
+        StaticLayout layout = new StaticLayout(text, 0, text.length(), textPaint, 1080, Layout.Alignment.ALIGN_NORMAL,
+                1.0f, 0f, false, TextUtils.TruncateAt.END, 200);
+        layout.draw(canvas);
+
 
 //        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 //        paint.setTextSize(DeviceUtils.dip2px(context, 30));

@@ -4,10 +4,9 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,7 +15,7 @@ import com.scwang.smartrefresh.layout.api.RefreshKernel;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
-import com.scwang.smartrefresh.layout.util.DensityUtil;
+import com.yangwei.www.R;
 
 /**
  * Created by yangwei on 2017/8/23.
@@ -24,7 +23,8 @@ import com.scwang.smartrefresh.layout.util.DensityUtil;
 
 public class CommonHeaderView extends LinearLayout implements RefreshHeader {
     private Context context;
-    private TextView textView;
+    private ImageView ivHeader;
+    private TextView tvHeader;
 
     public CommonHeaderView(Context context) {
         super(context);
@@ -45,25 +45,11 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
     }
 
     private void init() {
-        this.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUtil.dp2px(80)));
-        this.setGravity(Gravity.CENTER);
-        textView = new TextView(context);
-        textView.setText("默认");
-        this.addView(textView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
+        LayoutInflater.from(context).inflate(R.layout.layout_custom_header, this);
+        ivHeader = findViewById(R.id.iv_header);
+        tvHeader = findViewById(R.id.tv_header);
     }
 
-    @Override
-    public void onPullingDown(float percent, int offset, int headerHeight, int extendHeight) {
-//        setVisibility(GONE);
-        Log.e("Test","------------------------------onPullingDown");
-    }
-
-    @Override
-    public void onReleasing(float percent, int offset, int headerHeight, int extendHeight) {
-        textView.setText("刷新准备好");
-        Log.e("Test","------------------------------onReleasing");
-    }
 
     @NonNull
     @Override
@@ -71,9 +57,10 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
         return this;
     }
 
+    @NonNull
     @Override
     public SpinnerStyle getSpinnerStyle() {
-        return null;
+        return SpinnerStyle.Translate;
     }
 
     @Override
@@ -82,26 +69,42 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
     }
 
     @Override
-    public void onInitialized(RefreshKernel kernel, int height, int extendHeight) {
+    public void onInitialized(@NonNull RefreshKernel kernel, int height, int extendHeight) {
 
+    }
+
+    @Override
+    public void onPulling(float percent, int offset, int height, int extendHeight) {
+//        if (percent < 1) {
+//            ivHeader.animate().scaleX(percent).setDuration(0);
+//            ivHeader.animate().scaleY(percent).setDuration(0);
+//            tvHeader.animate().alpha(percent).setDuration(0);
+//        }
+    }
+
+    @Override
+    public void onReleasing(float percent, int offset, int height, int extendHeight) {
+
+    }
+
+    @Override
+    public void onReleased(RefreshLayout refreshLayout, int height, int extendHeight) {
+
+    }
+
+    @Override
+    public void onStartAnimator(@NonNull RefreshLayout refreshLayout, int height, int extendHeight) {
+
+    }
+
+    @Override
+    public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
+        return 0;
     }
 
     @Override
     public void onHorizontalDrag(float percentX, int offsetX, int offsetMax) {
 
-    }
-
-    @Override
-    public void onStartAnimator(RefreshLayout layout, int height, int extendHeight) {
-        textView.setText("开始动画");
-        this.setVisibility(VISIBLE);
-        Log.e("Test","------------------------------onStartAnimator");
-    }
-
-    @Override
-    public int onFinish(RefreshLayout layout, boolean success) {
-        Log.e("Test","------------------------------onFinish");
-        return 0;
     }
 
     @Override
@@ -111,6 +114,18 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public void onStateChanged(RefreshLayout refreshLayout, RefreshState oldState, RefreshState newState) {
-
+        switch (newState) {
+            case PullDownToRefresh:
+                tvHeader.setText("下拉刷新");
+                break;
+            case ReleaseToRefresh:
+                tvHeader.setText("松开刷新");
+                break;
+            case Refreshing:
+            case RefreshReleased:
+                tvHeader.setText("正在刷新");
+                break;
+            default:
+        }
     }
 }

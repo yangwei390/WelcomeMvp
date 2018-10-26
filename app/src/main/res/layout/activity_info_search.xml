@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.yangwei.www.view.CustomLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="10dp"
+                    android:text="到家族的各处产业中去，日后若非表现杰出或者在修炼速度赶上其他优秀族人，否则很难再次成为内部家日后若非表现杰出或者在修炼速度赶上其他优秀族人日后若非表现杰出或者在修炼速度赶上其他优秀族人日后若非表现杰出或者在修炼速度赶上其他优秀族人日后若非表现杰出或者在修炼速度赶上其他优秀族人日后若非表现杰出或者在修炼速度赶上其他优秀族人"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/iv_"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="3dp"
+                    android:src="@drawable/ic_edit" />
+            </com.yangwei.www.view.CustomLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

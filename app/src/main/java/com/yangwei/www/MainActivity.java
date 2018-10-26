@@ -12,8 +12,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yangwei.www.activity.CommonWebActivity;
+import com.yangwei.www.activity.CustomHeadeRefreshActivity;
+import com.yangwei.www.activity.InfoSearchActivity;
 import com.yangwei.www.activity.MyTextViewActivity;
 import com.yangwei.www.activity.PropertyAnimationActivity;
+import com.yangwei.www.activity.SmartRefreshActivity;
 import com.yangwei.www.activity.UpdateActivity;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
@@ -61,6 +64,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         mainList.add(UpdateActivity.class.getName());
         mainList.add(PropertyAnimationActivity.class.getName());
         mainList.add(CommonWebActivity.class.getName());
+        mainList.add(InfoSearchActivity.class.getName());
+        mainList.add(CustomHeadeRefreshActivity.class.getName());
+        mainList.add(SmartRefreshActivity.class.getName());
     }
 
     @Override
