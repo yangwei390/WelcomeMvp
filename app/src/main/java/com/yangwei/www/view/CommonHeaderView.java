@@ -96,15 +96,10 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public void onReleasing(float percent, int offset, int height, int extendHeight) {
-        Log.e("Test", "111111111111111111111111");
     }
 
     @Override
     public void onReleased(RefreshLayout refreshLayout, int height, int extendHeight) {
-        Log.e("Test", "2222222222222222222222222");
-//        if (ivHeader.isAnimating()) {
-//            return;
-//        }
         ivHeader.playAnimation();
     }
 
