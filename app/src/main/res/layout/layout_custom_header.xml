@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/iv_header"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:scaleType="fitCenter"
-        app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/refreshdata" />
 
@@ -19,5 +20,8 @@
         android:id="@+id/tv_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="下拉刷新" />
+        android:paddingTop="3dp"
+        android:text="下拉刷新"
+        android:textColor="#999999"
+        android:textSize="14sp" />
 </LinearLayout>

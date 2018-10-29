@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshKernel;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -23,7 +24,7 @@ import com.yangwei.www.R;
 
 public class CommonHeaderView extends LinearLayout implements RefreshHeader {
     private Context context;
-    private ImageView ivHeader;
+    private LottieAnimationView ivHeader;
     private TextView tvHeader;
 
     public CommonHeaderView(Context context) {
@@ -75,11 +76,14 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public void onPulling(float percent, int offset, int height, int extendHeight) {
-//        if (percent < 1) {
-//            ivHeader.animate().scaleX(percent).setDuration(0);
-//            ivHeader.animate().scaleY(percent).setDuration(0);
-//            tvHeader.animate().alpha(percent).setDuration(0);
-//        }
+        if (percent <= 1) {
+            ivHeader.animate().scaleX(percent).setDuration(0);
+            ivHeader.animate().scaleY(percent).setDuration(0);
+            tvHeader.animate().alpha(percent).setDuration(0);
+            tvHeader.animate().scaleX(percent).setDuration(0);
+            tvHeader.animate().scaleY(percent).setDuration(0);
+            ivHeader.setProgress(percent);
+        }
     }
 
     @Override
@@ -99,6 +103,7 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
+        ivHeader.pauseAnimation();
         return 0;
     }
 
@@ -124,7 +129,7 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
             case Refreshing:
             case RefreshReleased:
                 tvHeader.setText("正在刷新");
-                break;
+                ivHeader.playAnimation();
             default:
         }
     }
