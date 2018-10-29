@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
     private Context context;
     private LottieAnimationView ivHeader;
     private TextView tvHeader;
+    private RefreshState mState;
 
     public CommonHeaderView(Context context) {
         super(context);
@@ -76,24 +78,34 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public void onPulling(float percent, int offset, int height, int extendHeight) {
-        if (percent <= 1) {
-            ivHeader.animate().scaleX(percent).setDuration(0);
-            ivHeader.animate().scaleY(percent).setDuration(0);
-            tvHeader.animate().alpha(percent).setDuration(0);
-            tvHeader.animate().scaleX(percent).setDuration(0);
-            tvHeader.animate().scaleY(percent).setDuration(0);
-            ivHeader.setProgress(percent);
+        if (mState == RefreshState.Refreshing) {
+            return;
         }
+        if (percent <= 0) {
+            percent = 0f;
+        } else if (percent >= 1) {
+            percent = 1f;
+        }
+        ivHeader.animate().scaleX(percent).setDuration(0);
+        ivHeader.animate().scaleY(percent).setDuration(0);
+        tvHeader.animate().alpha(percent).setDuration(0);
+        tvHeader.animate().scaleX(percent).setDuration(0);
+        tvHeader.animate().scaleY(percent).setDuration(0);
+        ivHeader.setProgress(percent);
     }
 
     @Override
     public void onReleasing(float percent, int offset, int height, int extendHeight) {
-
+        Log.e("Test", "111111111111111111111111");
     }
 
     @Override
     public void onReleased(RefreshLayout refreshLayout, int height, int extendHeight) {
-
+        Log.e("Test", "2222222222222222222222222");
+//        if (ivHeader.isAnimating()) {
+//            return;
+//        }
+        ivHeader.playAnimation();
     }
 
     @Override
@@ -103,7 +115,7 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
-        ivHeader.pauseAnimation();
+        ivHeader.cancelAnimation();
         return 0;
     }
 
@@ -119,6 +131,7 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
 
     @Override
     public void onStateChanged(RefreshLayout refreshLayout, RefreshState oldState, RefreshState newState) {
+        mState = newState;
         switch (newState) {
             case PullDownToRefresh:
                 tvHeader.setText("下拉刷新");
@@ -129,7 +142,6 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
             case Refreshing:
             case RefreshReleased:
                 tvHeader.setText("正在刷新");
-                ivHeader.playAnimation();
             default:
         }
     }
