@@ -1,14 +1,19 @@
 package com.yangwei.www.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
+import android.widget.ListView;
 
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yangwei.www.R;
+import com.yangwei.www.adapter.HomeAdapter;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
+import com.yangwei.www.view.CommonFooterView;
+import com.yangwei.www.view.CommonRefreshLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,11 +23,18 @@ import butterknife.ButterKnife;
  * @Date 2018/10/26
  * @Description CustomHeadeRefreshActivity.
  */
-public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefreshListener {
-
+public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefreshLoadMoreListener {
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
 
     @BindView(R.id.srlt_)
-    SmartRefreshLayout srlt;
+    CommonRefreshLayout srlt;
+    @BindView(R.id.lv_refresh)
+    ListView lvRefresh;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +46,9 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
     @Override
     protected void initView() {
         ButterKnife.bind(this);
-        srlt.setOnRefreshListener(this);
+        lvRefresh.setAdapter(new HomeAdapter(this));
+        srlt.setOnRefreshLoadMoreListener(this);
+//        srlt.setNoMoreData(true);
     }
 
     @Override
@@ -43,17 +57,24 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
     }
 
     @Override
-    public void onRefresh(RefreshLayout refreshLayout) {
-        new Thread(new Runnable() {
+    public void onLoadMore(RefreshLayout refreshLayout) {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                srlt.finishRefresh();
+                srlt.finishLoadMore();
+                srlt.setNoMoreData(true);
             }
-        }).start();
+        }, 3000);
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshLayout) {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                srlt.finishRefresh();
+                srlt.setNoMoreData(false);
+            }
+        }, 3000);
     }
 }

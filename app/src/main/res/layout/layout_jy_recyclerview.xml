@@ -5,18 +5,13 @@
     android:orientation="vertical">
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/srlt_"
+        android:id="@+id/smrt_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary" />
-
+            android:layout_height="match_parent" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

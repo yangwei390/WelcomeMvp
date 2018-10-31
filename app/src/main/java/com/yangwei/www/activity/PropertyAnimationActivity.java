@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,8 +56,9 @@ public class PropertyAnimationActivity extends BaseActivity {
 //                iv1.animate().rotationX(360);
 //                iv1.animate().rotationBy(360);
 //                iv1.animate().alpha(300);
-                iv1.animate().setDuration(0);
-                iv1.animate().scaleX(-1);
+//                iv1.animate().setDuration(0);
+                iv1.animate().setInterpolator(new LinearInterpolator());
+                iv1.animate().rotation(36000).setDuration(100000);
                 break;
             case R.id.btn:
                 break;
