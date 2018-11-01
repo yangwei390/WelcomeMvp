@@ -1,5 +1,6 @@
 package com.yangwei.www.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -42,7 +43,7 @@ public class CommonRefreshLayout extends SmartRefreshLayout {
 
     @Override
     public SmartRefreshLayout setNoMoreData(boolean noMoreData) {
-        View secondView = mRefreshContent.getView();
+        @SuppressLint("RestrictedApi") View secondView = mRefreshContent.getView();
         if (secondView instanceof ListView) {
             if (noMoreData) {
                 listviewFooterView = new CommonFooterView(context);

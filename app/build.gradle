@@ -50,5 +50,5 @@ dependencies {
     implementation 'com.github.promeg:tinypinyin:2.0.3'
     implementation 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3'
     implementation 'com.airbnb.android:lottie:2.5.6'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
 }

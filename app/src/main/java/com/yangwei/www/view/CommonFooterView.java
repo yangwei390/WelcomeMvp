@@ -26,7 +26,7 @@ import com.yangwei.www.R;
 public class CommonFooterView extends LinearLayout implements RefreshFooter {
     private Context context;
     private LinearLayout ltLoading;
-    private ImageView ivLoading;
+    //    private ImageView ivLoading;
     private TextView tvNoData;
     protected boolean mNoMoreData = false;
 
@@ -51,9 +51,9 @@ public class CommonFooterView extends LinearLayout implements RefreshFooter {
     private void init() {
         LayoutInflater.from(context).inflate(R.layout.layout_common_footer, this);
         ltLoading = findViewById(R.id.lt_loading);
-        ivLoading = findViewById(R.id.iv_loading);
+//        ivLoading = findViewById(R.id.iv_loading);
         tvNoData = findViewById(R.id.tv_no_data);
-        ivLoading.animate().setInterpolator(new LinearInterpolator());
+//        ivLoading.animate().setInterpolator(new LinearInterpolator());
     }
 
     @Override
@@ -110,12 +110,12 @@ public class CommonFooterView extends LinearLayout implements RefreshFooter {
 
     @Override
     public void onStartAnimator(@NonNull RefreshLayout refreshLayout, int height, int extendHeight) {
-        ivLoading.animate().rotation(36000).setDuration(100000);
+//        ivLoading.animate().rotation(36000).setDuration(100000);
     }
 
     @Override
     public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
-        ivLoading.animate().rotation(0).setDuration(300);
+//        ivLoading.animate().rotation(0).setDuration(300);
         return 0;
     }
 
