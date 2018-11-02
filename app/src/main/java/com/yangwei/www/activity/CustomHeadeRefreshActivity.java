@@ -43,6 +43,7 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
 
     private List<String> list = new ArrayList<>();
     private HomeAdapter adapter;
+    private int i = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,8 +80,14 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                if (i < 3) {
+                    initData();
+                    adapter.notifyDataSetChanged();
+                    i++;
+                } else {
+                    srlt.setNoMoreData(true);
+                }
                 srlt.finishLoadMore();
-                srlt.setNoMoreData(true);
             }
         }, 3000);
     }
@@ -90,6 +97,10 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                i = 0;
+                list.clear();
+                initData();
+                adapter.notifyDataSetChanged();
                 srlt.finishRefresh();
                 srlt.setNoMoreData(false);
             }

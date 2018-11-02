@@ -5,11 +5,12 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.yangwei.www.R;
 
 /**
  * @author ____ Bye丶
@@ -18,7 +19,8 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
  */
 public class CommonRefreshLayout extends SmartRefreshLayout {
     private Context context;
-    private View listviewFooterView = null;
+    private View footView = null;
+    private CommonFooterView commonFooterView = null;
 
 
     public CommonRefreshLayout(Context context) {
@@ -47,20 +49,21 @@ public class CommonRefreshLayout extends SmartRefreshLayout {
         @SuppressLint("RestrictedApi") View secondView = mRefreshContent.getView();
         if (secondView instanceof ListView) {
             if (noMoreData) {
-                if (listviewFooterView == null) {
-                    listviewFooterView = new CommonFooterView(context);
-                    ((CommonFooterView) listviewFooterView).setNoMoreData(true);
-                    ((ListView) secondView).addFooterView(listviewFooterView, null, false);
+                if (footView == null) {
+                    footView = LayoutInflater.from(context).inflate(R.layout.view_footview, null);
+                    commonFooterView = footView.findViewById(R.id.footview);
+                    commonFooterView.setNoMoreData(true);
+                    ((ListView) secondView).addFooterView(footView, null, false);
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
                         ((ListView) secondView).setAdapter(((ListView) secondView).getAdapter());
                     }
                 } else {
-                    listviewFooterView.setVisibility(VISIBLE);
+                    commonFooterView.setVisibility(VISIBLE);
                 }
                 setEnableLoadMore(false);
             } else {
-                if (listviewFooterView != null) {
-                    listviewFooterView.setVisibility(GONE);
+                if (footView != null) {
+                    commonFooterView.setVisibility(GONE);
                 }
                 setEnableLoadMore(true);
             }
