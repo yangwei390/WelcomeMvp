@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -15,6 +17,9 @@ import com.yangwei.www.base.IBasePresenter;
 import com.yangwei.www.view.CommonFooterView;
 import com.yangwei.www.view.CommonRefreshLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -23,7 +28,7 @@ import butterknife.ButterKnife;
  * @Date 2018/10/26
  * @Description CustomHeadeRefreshActivity.
  */
-public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefreshLoadMoreListener {
+public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefreshLoadMoreListener, AdapterView.OnItemClickListener {
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -36,19 +41,32 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
     @BindView(R.id.lv_refresh)
     ListView lvRefresh;
 
+    private List<String> list = new ArrayList<>();
+    private HomeAdapter adapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_heade_refresh);
+        initData();
         initView();
     }
 
     @Override
     protected void initView() {
         ButterKnife.bind(this);
-        lvRefresh.setAdapter(new HomeAdapter(this));
+        adapter = new HomeAdapter(this, list);
+        lvRefresh.setAdapter(adapter);
+        lvRefresh.setOnItemClickListener(this);
         srlt.setOnRefreshLoadMoreListener(this);
-//        srlt.setNoMoreData(true);
+    }
+
+    private void initData() {
+        List<String> list = new ArrayList();
+        for (int i = 0; i < 5; i++) {
+            list.add(i + "");
+        }
+        this.list.addAll(list);
     }
 
     @Override
@@ -76,5 +94,12 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
                 srlt.setNoMoreData(false);
             }
         }, 3000);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        toast("点击的是----" + position);
+        initData();
+        adapter.notifyDataSetChanged();
     }
 }

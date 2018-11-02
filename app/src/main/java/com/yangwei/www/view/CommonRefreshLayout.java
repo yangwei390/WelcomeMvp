@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -46,13 +47,21 @@ public class CommonRefreshLayout extends SmartRefreshLayout {
         @SuppressLint("RestrictedApi") View secondView = mRefreshContent.getView();
         if (secondView instanceof ListView) {
             if (noMoreData) {
-                listviewFooterView = new CommonFooterView(context);
-                ((CommonFooterView) listviewFooterView).setNoMoreData(true);
-                ((ListView) secondView).addFooterView(listviewFooterView);
+                if (listviewFooterView == null) {
+                    listviewFooterView = new CommonFooterView(context);
+                    ((CommonFooterView) listviewFooterView).setNoMoreData(true);
+                    ((ListView) secondView).addFooterView(listviewFooterView, null, false);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                        ((ListView) secondView).setAdapter(((ListView) secondView).getAdapter());
+                    }
+                } else {
+                    listviewFooterView.setVisibility(VISIBLE);
+                }
                 setEnableLoadMore(false);
             } else {
-                ((ListView) secondView).removeFooterView(listviewFooterView);
-                listviewFooterView = null;
+                if (listviewFooterView != null) {
+                    listviewFooterView.setVisibility(GONE);
+                }
                 setEnableLoadMore(true);
             }
         } else {
