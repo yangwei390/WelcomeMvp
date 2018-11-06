@@ -63,9 +63,6 @@
             android:name=".activity.CustomHeadeRefreshActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.SmartRefreshActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.RecyclerViewActivity"
             android:screenOrientation="portrait" />
     </application>

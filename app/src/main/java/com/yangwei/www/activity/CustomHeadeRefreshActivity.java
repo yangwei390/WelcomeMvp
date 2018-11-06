@@ -64,7 +64,7 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
 
     private void initData() {
         List<String> list = new ArrayList();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             list.add(i + "");
         }
         this.list.addAll(list);
@@ -80,16 +80,16 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (i < 3) {
+                if (i < 1) {
                     initData();
                     adapter.notifyDataSetChanged();
                     i++;
                 } else {
                     srlt.setNoMoreData(true);
                 }
-                srlt.finishLoadMore();
+                srlt.finishLoadMore(0);
             }
-        }, 3000);
+        }, 500);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
                 list.clear();
                 initData();
                 adapter.notifyDataSetChanged();
-                srlt.finishRefresh();
+                srlt.finishRefresh(500);
                 srlt.setNoMoreData(false);
             }
         }, 3000);

@@ -17,7 +17,6 @@ import com.yangwei.www.activity.InfoSearchActivity;
 import com.yangwei.www.activity.MyTextViewActivity;
 import com.yangwei.www.activity.PropertyAnimationActivity;
 import com.yangwei.www.activity.RecyclerViewActivity;
-import com.yangwei.www.activity.SmartRefreshActivity;
 import com.yangwei.www.activity.UpdateActivity;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
@@ -67,7 +66,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         mainList.add(CommonWebActivity.class.getName());
         mainList.add(InfoSearchActivity.class.getName());
         mainList.add(CustomHeadeRefreshActivity.class.getName());
-        mainList.add(SmartRefreshActivity.class.getName());
         mainList.add(RecyclerViewActivity.class.getName());
     }
 
