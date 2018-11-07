@@ -86,11 +86,11 @@ public class CommonHeaderView extends LinearLayout implements RefreshHeader {
         } else if (percent >= 1) {
             percent = 1f;
         }
-        ivHeader.animate().scaleX(percent).setDuration(0);
-        ivHeader.animate().scaleY(percent).setDuration(0);
-        tvHeader.animate().alpha(percent).setDuration(0);
-        tvHeader.animate().scaleX(percent).setDuration(0);
-        tvHeader.animate().scaleY(percent).setDuration(0);
+        ivHeader.setScaleX(percent);
+        ivHeader.setScaleY(percent);
+        tvHeader.setAlpha(percent);
+        tvHeader.setScaleX(percent);
+        tvHeader.setScaleY(percent);
         ivHeader.setProgress(percent);
     }
 
