@@ -109,8 +109,8 @@ public class CustomHeadeRefreshActivity extends BaseActivity implements OnRefres
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        toast("点击的是----" + position);
-        initData();
-        adapter.notifyDataSetChanged();
+        toast("分割线的高度是----" + lvRefresh.getDividerHeight());
+//        initData();
+//        adapter.notifyDataSetChanged();
     }
 }

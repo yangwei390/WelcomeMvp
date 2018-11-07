@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.yangwei.www.R;
 import com.yangwei.www.adapter.RecyclerViewAdapter;
 import com.yangwei.www.base.BaseActivity;
@@ -66,6 +67,7 @@ public class RecyclerViewActivity extends BaseActivity implements JYRecyclerView
     protected void initView() {
         ButterKnife.bind(this);
         adapter = new RecyclerViewAdapter(list);
+        adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
         jyrV.initJYRecyclerView(list, adapter);
         jyrV.setPageSize(5);
         jyrV.setOnRefreshLoadMoreListener(this);
