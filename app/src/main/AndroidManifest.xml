@@ -65,6 +65,9 @@
         <activity
             android:name=".activity.RecyclerViewActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PermissionActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
