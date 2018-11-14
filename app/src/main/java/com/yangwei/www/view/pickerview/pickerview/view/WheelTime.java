@@ -593,63 +593,54 @@ public class WheelTime {
 
     }
 
+    /**
+     * 根据年月日小时控件的切换，控制分钟控件显示的区间
+     */
     private void setReMinute() {
-        int year;
-        int month;
-        int day;
-        int hour;
-        int currentItemM = wv_minutes.getCurrentItem();
+        //得到当前控件中的年月日小时
+        int year = wv_year.getCurrentItem() + startYear;
+        int month = wv_month.getCurrentItem() + 1;
+        int day = wv_day.getCurrentItem() + 1;
+        int hour = wv_hours.getCurrentItem();
         if (currentYear == startYear) {
+            month = wv_month.getCurrentItem() + startMonth;
             if ((wv_month.getCurrentItem() + startMonth) == startMonth) {
-                year = wv_year.getCurrentItem() + startYear;
-                month = wv_month.getCurrentItem() + startMonth;
                 day = wv_day.getCurrentItem() + startDay;
-                hour = wv_hours.getCurrentItem() + startHour;
-            } else {
-                year = wv_year.getCurrentItem() + startYear;
-                month = wv_month.getCurrentItem() + startMonth;
-                day = wv_day.getCurrentItem() + 1;
-                hour = wv_hours.getCurrentItem();
+                if ((wv_day.getCurrentItem() + startDay) == startDay) {
+                    hour = wv_hours.getCurrentItem() + startHour;
+                }
             }
-        } else {
-            year = wv_year.getCurrentItem() + startYear;
-            month = wv_month.getCurrentItem() + 1;
-            day = wv_day.getCurrentItem() + 1;
-            hour = wv_hours.getCurrentItem();
         }
+        //根据当前控件中年月日小时的和起始、结束年月日小时对比，等到分钟应该显示的区间
         if (year == startYear && month == startMonth && day == startDay && hour == startHour) {
             wv_minutes.setAdapter(new NumericWheelAdapter(startMinute, 59));
         } else if (year == endYear && month == endMonth && day == endDay && hour == endHour) {
-            wv_minutes.setAdapter(new NumericWheelAdapter(0, endHour));
+            wv_minutes.setAdapter(new NumericWheelAdapter(0, endMinute));
         } else {
             wv_minutes.setAdapter(new NumericWheelAdapter(0, 59));
         }
-        if (currentItemM > wv_minutes.getAdapter().getItemsCount() - 1) {
-            currentItemM = wv_minutes.getAdapter().getItemsCount() - 1;
-            wv_minutes.setCurrentItem(currentItemM);
+        int currentItem = wv_minutes.getCurrentItem();
+        if (currentItem > wv_minutes.getAdapter().getItemsCount() - 1) {
+            currentItem = wv_minutes.getAdapter().getItemsCount() - 1;
+            wv_minutes.setCurrentItem(currentItem);
         }
     }
 
+    /**
+     * 根据年月日控件的切换，控制小时控件显示的区间
+     */
     private void setReHour() {
-        int year;
-        int month;
-        int day;
-        int currentItemH = wv_hours.getCurrentItem();
+        //得到当前控件中的年月日
+        int year = wv_year.getCurrentItem() + startYear;
+        int month = wv_month.getCurrentItem() + 1;
+        int day = wv_day.getCurrentItem() + 1;
         if (currentYear == startYear) {
+            month = wv_month.getCurrentItem() + startMonth;
             if ((wv_month.getCurrentItem() + startMonth) == startMonth) {
-                year = wv_year.getCurrentItem() + startYear;
-                month = wv_month.getCurrentItem() + startMonth;
                 day = wv_day.getCurrentItem() + startDay;
-            } else {
-                year = wv_year.getCurrentItem() + startYear;
-                month = wv_month.getCurrentItem() + startMonth;
-                day = wv_day.getCurrentItem() + 1;
             }
-        } else {
-            year = wv_year.getCurrentItem() + startYear;
-            month = wv_month.getCurrentItem() + 1;
-            day = wv_day.getCurrentItem() + 1;
         }
+        //根据当前控件中年月日的和起始、结束年月日对比，等到小时应该显示的区间
         if (year == startYear && month == startMonth && day == startDay) {
             wv_hours.setAdapter(new NumericWheelAdapter(startHour, 23));
         } else if (year == endYear && month == endMonth && day == endDay) {
@@ -657,27 +648,26 @@ public class WheelTime {
         } else {
             wv_hours.setAdapter(new NumericWheelAdapter(0, 23));
         }
-        if (currentItemH > wv_hours.getAdapter().getItemsCount() - 1) {
-            currentItemH = wv_hours.getAdapter().getItemsCount() - 1;
-            wv_hours.setCurrentItem(currentItemH);
+        //刷新小时的角标
+        int currentItem = wv_hours.getCurrentItem();
+        if (currentItem > wv_hours.getAdapter().getItemsCount() - 1) {
+            currentItem = wv_hours.getAdapter().getItemsCount() - 1;
+            wv_hours.setCurrentItem(currentItem);
         }
     }
 
     private void setReDay(int year_num, int monthNum, int startD, int endD, List<String> list_big, List<String> list_little) {
         int currentItem = wv_day.getCurrentItem();
-//        int maxItem;
         if (list_big.contains(String.valueOf(monthNum))) {
             if (endD > 31) {
                 endD = 31;
             }
             wv_day.setAdapter(new NumericWheelAdapter(startD, endD));
-//            maxItem = endD;
         } else if (list_little.contains(String.valueOf(monthNum))) {
             if (endD > 30) {
                 endD = 30;
             }
             wv_day.setAdapter(new NumericWheelAdapter(startD, endD));
-//            maxItem = endD;
         } else {
             if ((year_num % 4 == 0 && year_num % 100 != 0)
                     || year_num % 400 == 0) {
@@ -685,13 +675,11 @@ public class WheelTime {
                     endD = 29;
                 }
                 wv_day.setAdapter(new NumericWheelAdapter(startD, endD));
-//                maxItem = endD;
             } else {
                 if (endD > 28) {
                     endD = 28;
                 }
                 wv_day.setAdapter(new NumericWheelAdapter(startD, endD));
-//                maxItem = endD;
             }
         }
 

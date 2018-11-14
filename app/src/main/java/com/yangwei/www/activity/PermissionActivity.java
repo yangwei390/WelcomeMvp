@@ -63,7 +63,9 @@ public class PermissionActivity extends BaseActivity {
         Calendar date = Calendar.getInstance(Locale.CHINA);
         date.add(Calendar.YEAR, 1);
         startCalendar.add(Calendar.MINUTE, 20);
-        endCalendar.add(Calendar.MONTH, 1);
+        endCalendar.add(Calendar.YEAR, 1);
+        endCalendar.set(endCalendar.get(Calendar.YEAR), endCalendar.get(Calendar.MONTH), endCalendar.get(Calendar.DAY_OF_MONTH), 23, 59, 59);
+//        endCalendar.set(2020, 11, 31,23,59,59);
 
         TimePickerView pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
@@ -82,7 +84,7 @@ public class PermissionActivity extends BaseActivity {
                 .setType(new boolean[]{true, true, true, true, true, false})
                 .isDialog(true) //默认设置false ，内部实现将DecorView 作为它的父控件。
                 .setRangDate(startCalendar, endCalendar)
-//                .setDate(date)
+//                .setDate(endCalendar)
                 .build();
 
         Dialog mDialog = pvTime.getDialog();
