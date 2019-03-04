@@ -70,4 +70,5 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
     //google权限系统
     implementation 'pub.devrel:easypermissions:2.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }
