@@ -60,6 +60,11 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         setContentView(R.layout.activity_update);
         initView();
 //        updatePresenter.getNewVersion();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         showNetDialog();
         handler.postDelayed(new Runnable() {
             @Override
@@ -67,7 +72,6 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
                 dismissNetDialog();
             }
         }, 200);
-
     }
 
     @Override
