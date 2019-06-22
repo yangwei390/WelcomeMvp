@@ -71,4 +71,10 @@ dependencies {
     //google权限系统
     implementation 'pub.devrel:easypermissions:2.0.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
+    // gradle
+    implementation 'com.alibaba.android:tangram:3.3.6@aar'
+    // 最新版本引入了rxjava，需要自行添加rx依赖
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
 }

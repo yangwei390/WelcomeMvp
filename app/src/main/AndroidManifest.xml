@@ -68,6 +68,9 @@
         <activity
             android:name=".activity.PermissionActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TangramAndroidActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

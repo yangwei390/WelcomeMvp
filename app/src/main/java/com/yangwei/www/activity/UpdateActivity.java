@@ -3,6 +3,8 @@ package com.yangwei.www.activity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +29,13 @@ import butterknife.OnClick;
 
 public class UpdateActivity extends BaseActivity implements UpdateContract.View {
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
     public static final String ACTION_B = "com.yangwei.www.b";
 
 
@@ -50,7 +59,15 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.View 
         StatusBarUtil.setLightMode(this);
         setContentView(R.layout.activity_update);
         initView();
-        updatePresenter.getNewVersion();
+//        updatePresenter.getNewVersion();
+        showNetDialog();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dismissNetDialog();
+            }
+        }, 200);
+
     }
 
     @Override

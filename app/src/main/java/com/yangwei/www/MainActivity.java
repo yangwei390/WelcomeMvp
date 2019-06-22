@@ -18,6 +18,7 @@ import com.yangwei.www.activity.MyTextViewActivity;
 import com.yangwei.www.activity.PermissionActivity;
 import com.yangwei.www.activity.PropertyAnimationActivity;
 import com.yangwei.www.activity.RecyclerViewActivity;
+import com.yangwei.www.activity.TangramAndroidActivity;
 import com.yangwei.www.activity.UpdateActivity;
 import com.yangwei.www.base.BaseActivity;
 import com.yangwei.www.base.IBasePresenter;
@@ -69,6 +70,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         mainList.add(CustomHeadeRefreshActivity.class.getName());
         mainList.add(RecyclerViewActivity.class.getName());
         mainList.add(PermissionActivity.class.getName());
+        mainList.add(TangramAndroidActivity.class.getName());
     }
 
     @Override

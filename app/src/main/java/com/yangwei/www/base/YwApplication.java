@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
 import com.github.promeg.pinyinhelper.Pinyin;
 import com.github.promeg.tinypinyin.lexicons.android.cncity.CnCityDict;
@@ -13,6 +15,8 @@ import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.tmall.wireless.tangram.TangramBuilder;
+import com.tmall.wireless.tangram.util.IInnerImageSetter;
 import com.yangwei.www.net.monitor.NetStatusChangeReceiver;
 import com.yangwei.www.view.CommonFooterView;
 import com.yangwei.www.view.CommonHeaderView;
